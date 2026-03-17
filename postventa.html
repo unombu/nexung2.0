@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-venta – Nexung</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="service.css">
+</head>
+<body class="service-page">
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/images/logo.png" alt="logo" class="logo1">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebarClose">✕</button>
+        <nav class="sidebar-nav">
+            <a href="index.html#section-container" class="sidebar-link">¿Qué hacemos?</a>
+            <a href="index.html#about" class="sidebar-link">Sobre nosotros</a>
+
+            <div class="sidebar-accordion">
+                <button class="sidebar-accordion-btn">
+                    Servicios <span class="accordion-arrow">›</span>
+                </button>
+                <div class="sidebar-accordion-body">
+                    <a href="desarrollo.html" class="sidebar-sublink">Desarrollo</a>
+                    <a href="gerenciamiento.html" class="sidebar-sublink">Gerenciamiento</a>
+                    <a href="comercializacion.html" class="sidebar-sublink">Comercialización</a>
+                    <a href="postventa.html" class="sidebar-sublink">Post-venta</a>
+                </div>
+            </div>
+
+            <a href="index.html#contacto" class="sidebar-link">Contacto</a>
+        </nav>
+    </aside>
+
+    <section class="service-hero service-hero--pink">
+        <div class="service-hero-content">
+            <span class="service-number">04</span>
+            <h1>Post-venta</h1>
+            <p class="service-hero-lead">Continuidad técnica y operativa una vez finalizada la ejecución del proyecto.</p>
+        </div>
+    </section>
+
+    <section class="service-body">
+        <div class="service-container">
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Soporte técnico post-entrega</h2>
+                    <p>Acompañamos a nuestros clientes también en la etapa post-venta, asegurando continuidad técnica y operativa una vez finalizada la ejecución del proyecto. Nuestra participación puede abarcar desde el soporte técnico en el período de garantías hasta la coordinación con proveedores y contratistas.</p>
+                </div>
+            </div>
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Administración y operación del activo</h2>
+                    <p>Trabajamos en la organización de esquemas de administración, mantenimiento y operación del activo, de acuerdo con las necesidades de cada proyecto. Nuestro enfoque flexible y escalable permite preservar el valor del activo en el tiempo y asegurar una correcta transición hacia la etapa de uso y operación.</p>
+                </div>
+            </div>
+
+            <div class="service-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-num">∞</span>
+                    <span class="highlight-label">continuidad garantizada</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">↑</span>
+                    <span class="highlight-label">valor del activo</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">✓</span>
+                    <span class="highlight-label">transición ordenada</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <nav class="service-nav-footer">
+        <a href="comercializacion.html" class="service-nav-back">
+            <span>←</span> Comercialización
+        </a>
+        <div class="service-nav-next-wrapper">
+            <span class="service-nav-label">Volver al inicio</span>
+            <a href="index.html#servicios" class="service-nav-next">
+                Todos los servicios <span>→</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+    /* Hamburger + Sidebar — standalone para páginas de servicio */
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger    = document.getElementById('hamburger');
+        const sidebar      = document.getElementById('sidebar');
+        const navOverlay   = document.getElementById('navOverlay');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            navOverlay.classList.add('active');
+            hamburger.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            navOverlay.classList.remove('active');
+            hamburger.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', openSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        navOverlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidebar();
+        });
+
+        document.querySelectorAll('.sidebar-link, .sidebar-sublink').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+
+        /* Acordeón */
+        const accordionBtn = document.querySelector('.sidebar-accordion-btn');
+        if (accordionBtn) {
+            accordionBtn.addEventListener('click', () => {
+                accordionBtn.closest('.sidebar-accordion').classList.toggle('open');
+            });
+        }
+    });
+    </script>
+</body>
+</html>

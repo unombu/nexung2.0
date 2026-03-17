@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo – Nexung</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="service.css">
+</head>
+<body class="service-page">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/images/logo.png" alt="logo" class="logo1">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebarClose">✕</button>
+        <nav class="sidebar-nav">
+            <a href="index.html#section-container" class="sidebar-link">¿Qué hacemos?</a>
+            <a href="index.html#about" class="sidebar-link">Sobre nosotros</a>
+
+            <div class="sidebar-accordion">
+                <button class="sidebar-accordion-btn">
+                    Servicios <span class="accordion-arrow">›</span>
+                </button>
+                <div class="sidebar-accordion-body">
+                    <a href="desarrollo.html" class="sidebar-sublink">Desarrollo</a>
+                    <a href="gerenciamiento.html" class="sidebar-sublink">Gerenciamiento</a>
+                    <a href="comercializacion.html" class="sidebar-sublink">Comercialización</a>
+                    <a href="postventa.html" class="sidebar-sublink">Post-venta</a>
+                </div>
+            </div>
+
+            <a href="index.html#contacto" class="sidebar-link">Contacto</a>
+        </nav>
+    </aside>
+
+    <!-- HERO del servicio -->
+    <section class="service-hero service-hero--green">
+        <div class="service-hero-content">
+            <span class="service-number">01</span>
+            <h1>Desarrollo</h1>
+            <p class="service-hero-lead">Análisis, definición y estructuración de proyectos inmobiliarios y constructivos desde sus etapas iniciales.</p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="service-body">
+        <div class="service-container">
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Evaluación y estructuración inicial</h2>
+                    <p>Evaluamos el potencial del activo, la viabilidad normativa, técnica y económica, y definimos el concepto del proyecto antes de avanzar en su ejecución. Analizamos cada variable del contexto para asegurar que la decisión de invertir esté bien fundamentada.</p>
+                </div>
+            </div>
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Modelo de negocio e inversión</h2>
+                    <p>Definición del modelo de negocio del proyecto, análisis de costos, estimación de rentabilidad y estructuración de escenarios de inversión, acompañando la estrategia y trabajando en conjunto con inversores y propietarios para construir un plan coherente y ejecutable.</p>
+                </div>
+            </div>
+
+            <div class="service-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-num">30+</span>
+                    <span class="highlight-label">años de experiencia</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">100%</span>
+                    <span class="highlight-label">criterio independiente</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">∞</span>
+                    <span class="highlight-label">escala y contexto</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NAVEGACIÓN ENTRE SERVICIOS -->
+    <nav class="service-nav-footer">
+        <a href="index.html#servicios" class="service-nav-back">
+            <span>←</span> Todos los servicios
+        </a>
+        <div class="service-nav-next-wrapper">
+            <span class="service-nav-label">Siguiente servicio</span>
+            <a href="gerenciamiento.html" class="service-nav-next">
+                Gerenciamiento <span>→</span>
+            </a>
+        </div>
+    </nav>
+
+        <script>
+    /* Hamburger + Sidebar — standalone para páginas de servicio */
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger    = document.getElementById('hamburger');
+        const sidebar      = document.getElementById('sidebar');
+        const navOverlay   = document.getElementById('navOverlay');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            navOverlay.classList.add('active');
+            hamburger.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            navOverlay.classList.remove('active');
+            hamburger.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', openSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        navOverlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidebar();
+        });
+
+        document.querySelectorAll('.sidebar-link, .sidebar-sublink').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+
+        /* Acordeón */
+        const accordionBtn = document.querySelector('.sidebar-accordion-btn');
+        if (accordionBtn) {
+            accordionBtn.addEventListener('click', () => {
+                accordionBtn.closest('.sidebar-accordion').classList.toggle('open');
+            });
+        }
+    });
+    </script>
+</body>
+</html>

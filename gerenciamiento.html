@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamiento – Nexung</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="service.css">
+</head>
+<body class="service-page">
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/images/logo.png" alt="logo" class="logo1">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebarClose">✕</button>
+        <nav class="sidebar-nav">
+            <a href="index.html#section-container" class="sidebar-link">¿Qué hacemos?</a>
+            <a href="index.html#about" class="sidebar-link">Sobre nosotros</a>
+
+            <div class="sidebar-accordion">
+                <button class="sidebar-accordion-btn">
+                    Servicios <span class="accordion-arrow">›</span>
+                </button>
+                <div class="sidebar-accordion-body">
+                    <a href="desarrollo.html" class="sidebar-sublink">Desarrollo</a>
+                    <a href="gerenciamiento.html" class="sidebar-sublink">Gerenciamiento</a>
+                    <a href="comercializacion.html" class="sidebar-sublink">Comercialización</a>
+                    <a href="postventa.html" class="sidebar-sublink">Post-venta</a>
+                </div>
+            </div>
+
+            <a href="index.html#contacto" class="sidebar-link">Contacto</a>
+        </nav>
+    </aside>
+
+    <section class="service-hero service-hero--yellow">
+        <div class="service-hero-content">
+            <span class="service-number">02</span>
+            <h1>Gerenciamiento</h1>
+            <p class="service-hero-lead">Coordinación técnica, económica y operativa de proyectos de arquitectura, ingeniería y construcción.</p>
+        </div>
+    </section>
+
+    <section class="service-body">
+        <div class="service-container">
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Gestión integral del proyecto</h2>
+                    <p>Participamos en el desarrollo desde el anteproyecto hasta la recepción final de la obra y entrega a sus propietarios, gestionando equipos, plazos, costos y calidad. Nuestro rol es garantizar que cada etapa del proceso avance con orden, control y criterio técnico.</p>
+                </div>
+            </div>
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Control técnico y operativo</h2>
+                    <p>Realizamos el seguimiento técnico y operativo durante la ejecución del proyecto, control de desvíos y soporte posterior a la entrega. Nuestro objetivo es asegurar coherencia entre lo proyectado y lo ejecutado, manteniendo el control técnico y económico del proceso en todo momento.</p>
+                </div>
+            </div>
+
+            <div class="service-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-num">360°</span>
+                    <span class="highlight-label">visión del proyecto</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">0</span>
+                    <span class="highlight-label">desvíos sin control</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">✓</span>
+                    <span class="highlight-label">entrega garantizada</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <nav class="service-nav-footer">
+        <a href="desarrollo.html" class="service-nav-back">
+            <span>←</span> Desarrollo
+        </a>
+        <div class="service-nav-next-wrapper">
+            <span class="service-nav-label">Siguiente servicio</span>
+            <a href="comercializacion.html" class="service-nav-next">
+                Comercialización <span>→</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+    /* Hamburger + Sidebar — standalone para páginas de servicio */
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger    = document.getElementById('hamburger');
+        const sidebar      = document.getElementById('sidebar');
+        const navOverlay   = document.getElementById('navOverlay');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            navOverlay.classList.add('active');
+            hamburger.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            navOverlay.classList.remove('active');
+            hamburger.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', openSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        navOverlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidebar();
+        });
+
+        document.querySelectorAll('.sidebar-link, .sidebar-sublink').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+
+        /* Acordeón */
+        const accordionBtn = document.querySelector('.sidebar-accordion-btn');
+        if (accordionBtn) {
+            accordionBtn.addEventListener('click', () => {
+                accordionBtn.closest('.sidebar-accordion').classList.toggle('open');
+            });
+        }
+    });
+    </script>
+</body>
+</html>

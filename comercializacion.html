@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comercialización – Nexung</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="service.css">
+</head>
+<body class="service-page">
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/images/logo.png" alt="logo" class="logo1">
+            </a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebarClose">✕</button>
+        <nav class="sidebar-nav">
+            <a href="index.html#section-container" class="sidebar-link">¿Qué hacemos?</a>
+            <a href="index.html#about" class="sidebar-link">Sobre nosotros</a>
+
+            <div class="sidebar-accordion">
+                <button class="sidebar-accordion-btn">
+                    Servicios <span class="accordion-arrow">›</span>
+                </button>
+                <div class="sidebar-accordion-body">
+                    <a href="desarrollo.html" class="sidebar-sublink">Desarrollo</a>
+                    <a href="gerenciamiento.html" class="sidebar-sublink">Gerenciamiento</a>
+                    <a href="comercializacion.html" class="sidebar-sublink">Comercialización</a>
+                    <a href="postventa.html" class="sidebar-sublink">Post-venta</a>
+                </div>
+            </div>
+
+            <a href="index.html#contacto" class="sidebar-link">Contacto</a>
+        </nav>
+    </aside>
+
+    <section class="service-hero service-hero--blue">
+        <div class="service-hero-content">
+            <span class="service-number">03</span>
+            <h1>Comercialización</h1>
+            <p class="service-hero-lead">Estrategia de salida y articulación con el mercado objetivo del proyecto, con criterio independiente.</p>
+        </div>
+    </section>
+
+    <section class="service-body">
+        <div class="service-container">
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Estrategia de comercialización</h2>
+                    <p>La comercialización puede desarrollarse de forma directa o coordinada con brokers, inmobiliarias o equipos comerciales del cliente, con quienes trabajamos de forma articulada para asegurar coherencia entre el producto definido, el mercado objetivo y la estrategia de salida.</p>
+                </div>
+            </div>
+
+            <div class="service-block">
+                <div class="service-block-icon">◈</div>
+                <div class="service-block-text">
+                    <h2>Criterio independiente</h2>
+                    <p>Este esquema permite separar claramente los roles, reducir conflictos de interés y asegurar que las decisiones técnicas y económicas del proyecto se tomen con criterio independiente, priorizando la viabilidad y sostenibilidad del desarrollo por encima de cualquier interés comercial parcial.</p>
+                </div>
+            </div>
+
+            <div class="service-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-num">⊕</span>
+                    <span class="highlight-label">criterio independiente</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">↗</span>
+                    <span class="highlight-label">estrategia de salida</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-num">⊙</span>
+                    <span class="highlight-label">mercado objetivo</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <nav class="service-nav-footer">
+        <a href="gerenciamiento.html" class="service-nav-back">
+            <span>←</span> Gerenciamiento
+        </a>
+        <div class="service-nav-next-wrapper">
+            <span class="service-nav-label">Siguiente servicio</span>
+            <a href="postventa.html" class="service-nav-next">
+                Post-venta <span>→</span>
+            </a>
+        </div>
+    </nav>
+
+        <script>
+    /* Hamburger + Sidebar — standalone para páginas de servicio */
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger    = document.getElementById('hamburger');
+        const sidebar      = document.getElementById('sidebar');
+        const navOverlay   = document.getElementById('navOverlay');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            navOverlay.classList.add('active');
+            hamburger.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            navOverlay.classList.remove('active');
+            hamburger.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', openSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        navOverlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidebar();
+        });
+
+        document.querySelectorAll('.sidebar-link, .sidebar-sublink').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+
+        /* Acordeón */
+        const accordionBtn = document.querySelector('.sidebar-accordion-btn');
+        if (accordionBtn) {
+            accordionBtn.addEventListener('click', () => {
+                accordionBtn.closest('.sidebar-accordion').classList.toggle('open');
+            });
+        }
+    });
+    </script>
+</body>
+</html>
