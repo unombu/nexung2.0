@@ -142,6 +142,10 @@
                 <h2>CONTÁCTANOS</h2>
                 <h3>Si tenés un proyecto o una idea que necesitas estructurar, evaluar o desarrollar, conversemos para analizar su viabilidad y alcance.</h3>
                 <form id="contactForm" class="contact-form">
+                    <div style="display:none;">
+                        <label>Si eres humano, deja esto vacío</label>
+                        <input type="text" name="honeypot" id="honeypot">
+                    </div>
                     <div class="form-row">
                         <input type="text" id="nombre" name="user_name" placeholder="Nombre completo" required>
                         <input type="email" id="email" name="user_email" placeholder="Correo electrónico" required>                    </div>
@@ -151,7 +155,12 @@
                     </div>
                     <textarea id="mensaje" name="message" placeholder="Escríbenos..." required></textarea>
                     <input type="hidden" name="contact_number" value="697483">
+
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <div class="g-recaptcha" data-sitekey="6LdoVLcsAAAAAHvNCIFz8ZjI5KcD0XAxd8fjh5cd"></div>
+
                     <button type="submit" class="btn-submit">ENVIAR</button>
+
                     <p id="formMessage"></p>
                 </form>
             </div>

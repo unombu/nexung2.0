@@ -4,31 +4,48 @@
  
 /* ---- EmailJS ---- */
 (function() {
-    emailjs.init("TU_PUBLIC_KEY_AQUI");
+    emailjs.init("ctXPNdbxEP25tJjHW");
 })();
- 
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    const btn = document.querySelector('.btn-submit');
-    const message = document.getElementById("formMessage");
- 
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        btn.innerText = 'ENVIANDO...';
- 
-        emailjs.sendForm('default_service', 'template_id_ejemplo', this)
-            .then(() => {
-                btn.innerText = 'ENVIAR';
-                message.innerText = '¡Mensaje enviado con éxito!';
-                message.style.color = "lightgreen";
-                this.reset();
-            }, (err) => {
-                btn.innerText = 'ENVIAR';
-                message.innerText = "Error al enviar: " + JSON.stringify(err);
-                message.style.color = "red";
-            });
-    });
-}
+
+/* ---- Dentro del evento 'submit' de tu script.js ---- */
+
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // 1. Verificar HoneyPot
+    if (honeypot.value !== "") return;
+
+    // 2. Obtener la respuesta del Captcha
+    const captchaResponse = grecaptcha.getResponse();
+    if (captchaResponse.length === 0) {
+        message.innerText = "Por favor, completa el captcha.";
+        message.style.color = "orange";
+        return;
+    }
+
+    btn.innerText = 'ENVIANDO...';
+    btn.disabled = true;
+    
+    const serviceID = 'service_93g7qhn'; 
+    const templateID = 'template_nop98y4';
+
+    // 3. Enviar el formulario incluyendo el token del captcha
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+            btn.innerText = 'ENVIAR';
+            btn.disabled = false;
+            message.innerText = '¡Mensaje enviado con éxito!';
+            message.style.color = "lightgreen";
+            grecaptcha.reset(); // Resetear el captcha tras el éxito
+            this.reset();
+            setTimeout(() => { message.innerText = ""; }, 5000);
+        }, (err) => {
+            btn.innerText = 'ENVIAR';
+            btn.disabled = false;
+            message.innerText = "Error: " + JSON.stringify(err);
+            message.style.color = "red";
+        });
+});
  
 /* ---- Navbar hide/show on scroll ---- */
 let lastScroll = 0;
